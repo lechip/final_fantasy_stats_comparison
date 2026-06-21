@@ -4,6 +4,7 @@ import SpriteFilterBar from './components/SpriteFilterBar.vue'
 import LevelControl from './components/LevelControl.vue'
 import StatRadar from './components/StatRadar.vue'
 import LegendTable from './components/LegendTable.vue'
+import GithubLink from './components/GithubLink.vue'
 import { runSanityChecks } from './lib/stats.js'
 
 onMounted(() => {
@@ -37,6 +38,7 @@ onMounted(() => {
     <footer class="caveat">
       Sprites &amp; characters &copy; Square Enix — non-commercial fan project. Stats show natural
       growth (no Esper level-up bonuses).
+      <GithubLink />
     </footer>
   </div>
 </template>
