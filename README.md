@@ -108,6 +108,53 @@ character's initial. The default set is Pixel Remaster
   (see [`src/assets/PressStart2P-OFL.txt`](src/assets/PressStart2P-OFL.txt)).
 - App code: free to use.
 
+## Component composition
+
+The UI is a small tree of single-file components. `App.vue` is the layout root;
+the interactive components don't pass props to each other — they share a single
+reactive store (`useComparison`), which derives everything from the JSON data via
+`lib/stats.js`. That's why toggling a character or moving the level updates the
+radar and the value table together.
+
+```mermaid
+graph TD
+    App["App.vue (root layout)"]
+
+    App --> SFB["SpriteFilterBar"]
+    App --> LC["LevelControl"]
+    App --> SR["StatRadar"]
+    App --> LT["LegendTable"]
+    App --> GL["GithubLink"]
+    SFB --> CS["CharacterSprite ×14"]
+
+    subgraph shared["Shared state and data"]
+        Store(["useComparison store"])
+        Stats["lib/stats.js"]
+        Assets["lib/assets.js"]
+        JSON[("characters.json + levels.json")]
+    end
+
+    SFB -. uses .-> Store
+    CS -. uses .-> Store
+    LC -. uses .-> Store
+    SR -. uses .-> Store
+    LT -. uses .-> Store
+    CS -. uses .-> Assets
+    SR -. reads .-> Stats
+    LT -. reads .-> Stats
+    Store -. reads .-> Stats
+    Stats --> JSON
+```
+
+**Solid arrows** = renders (composition) · **dotted arrows** = uses (shared state / data).
+
+- `App.vue` arranges the sprite row, the level control, and the graph + table panels.
+- `SpriteFilterBar` renders one `CharacterSprite` per character (14 in total).
+- `useComparison` holds the selected characters, the level, and the sprite style;
+  every interactive component reads and writes it.
+- `lib/stats.js` is the single source of truth for the stat math, loaded from
+  `characters.json` + `levels.json`; `lib/assets.js` resolves base-aware sprite URLs.
+
 ## Tech
 
 Vue 3 (Composition API, single-file components) · Vite · Chart.js · plain CSS.
