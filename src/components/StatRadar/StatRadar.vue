@@ -9,8 +9,8 @@ import {
   Filler,
   Tooltip,
 } from 'chart.js'
-import { STAT_AXES, statsAtLevel, toNormalized } from '../lib/stats.js'
-import { useComparison } from '../composables/useComparison.js'
+import { STAT_AXES, statsAtLevel, toNormalized } from '../../lib/stats.js'
+import { useComparison } from '../../composables/useComparison.js'
 
 Chart.register(RadarController, RadialLinearScale, PointElement, LineElement, Filler, Tooltip)
 

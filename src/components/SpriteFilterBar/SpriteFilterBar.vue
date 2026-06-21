@@ -1,6 +1,6 @@
 <script setup>
-import { useComparison } from '../composables/useComparison.js'
-import CharacterSprite from './CharacterSprite.vue'
+import { useComparison } from '../../composables/useComparison.js'
+import CharacterSprite from '../CharacterSprite/CharacterSprite.vue'
 
 const { CHARACTERS, isSelected, isFull, toggle, spriteStyle, setSpriteStyle } = useComparison()
 </script>

@@ -1,5 +1,5 @@
 <script setup>
-import { useComparison } from '../composables/useComparison.js'
+import { useComparison } from '../../composables/useComparison.js'
 
 const { CHECKPOINTS, levelIndex, currentCheckpoint } = useComparison()
 const maxIndex = CHECKPOINTS.length - 1

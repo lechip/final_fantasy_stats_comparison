@@ -8,7 +8,7 @@ import {
   statsAtLevel,
   toNormalized,
   runSanityChecks,
-} from '../src/lib/stats.js'
+} from './stats.js'
 
 const terra = getCharacter('terra')
 const lv50 = CHECKPOINTS.find((c) => c.level === 50)

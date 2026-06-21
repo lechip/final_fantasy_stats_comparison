@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import LevelControl from '../../src/components/LevelControl.vue'
-import { useComparison } from '../../src/composables/useComparison.js'
-import { CHECKPOINTS } from '../../src/lib/stats.js'
+import LevelControl from './LevelControl.vue'
+import { useComparison } from '../../composables/useComparison.js'
+import { CHECKPOINTS } from '../../lib/stats.js'
 
 const store = useComparison()
 beforeEach(() => {

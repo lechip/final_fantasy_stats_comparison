@@ -23,9 +23,9 @@ vi.mock('chart.js', () => {
 })
 
 import { Chart } from 'chart.js'
-import StatRadar from '../../src/components/StatRadar.vue'
-import { useComparison } from '../../src/composables/useComparison.js'
-import { CHECKPOINTS } from '../../src/lib/stats.js'
+import StatRadar from './StatRadar.vue'
+import { useComparison } from '../../composables/useComparison.js'
+import { CHECKPOINTS } from '../../lib/stats.js'
 
 const store = useComparison()
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { spriteUrl } from '../src/lib/assets.js'
+import { spriteUrl } from './assets.js'
 
 const BASE = import.meta.env.BASE_URL // '/' under test
 

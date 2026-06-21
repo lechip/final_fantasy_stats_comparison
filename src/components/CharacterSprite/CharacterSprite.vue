@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { spriteUrl } from '../lib/assets.js'
-import { useComparison } from '../composables/useComparison.js'
+import { spriteUrl } from '../../lib/assets.js'
+import { useComparison } from '../../composables/useComparison.js'
 
 const props = defineProps({
   character: { type: Object, required: true },

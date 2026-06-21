@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onUnmounted } from 'vue'
-import { STAT_AXES, statsAtLevel } from '../lib/stats.js'
-import { useComparison } from '../composables/useComparison.js'
+import { STAT_AXES, statsAtLevel } from '../../lib/stats.js'
+import { useComparison } from '../../composables/useComparison.js'
 
 const { selectedCharacters, currentCheckpoint } = useComparison()
 

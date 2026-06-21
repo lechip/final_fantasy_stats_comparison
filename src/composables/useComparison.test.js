@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { useComparison } from '../src/composables/useComparison.js'
-import { CHECKPOINTS } from '../src/lib/stats.js'
+import { useComparison } from './useComparison.js'
+import { CHECKPOINTS } from '../lib/stats.js'
 
 // Module-scoped singleton — reset to defaults before each test.
 const store = useComparison()

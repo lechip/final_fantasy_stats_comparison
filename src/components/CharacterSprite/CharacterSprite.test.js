@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { nextTick } from 'vue'
 import { mount } from '@vue/test-utils'
-import CharacterSprite from '../../src/components/CharacterSprite.vue'
-import { useComparison } from '../../src/composables/useComparison.js'
-import { getCharacter } from '../../src/lib/stats.js'
+import CharacterSprite from './CharacterSprite.vue'
+import { useComparison } from '../../composables/useComparison.js'
+import { getCharacter } from '../../lib/stats.js'
 
 const terra = getCharacter('terra')
 const store = useComparison()

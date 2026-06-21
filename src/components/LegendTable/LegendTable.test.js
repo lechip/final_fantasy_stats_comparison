@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import LegendTable from '../../src/components/LegendTable.vue'
-import { useComparison } from '../../src/composables/useComparison.js'
-import { CHECKPOINTS } from '../../src/lib/stats.js'
+import LegendTable from './LegendTable.vue'
+import { useComparison } from '../../composables/useComparison.js'
+import { CHECKPOINTS } from '../../lib/stats.js'
 
 const store = useComparison()
 let wrapper

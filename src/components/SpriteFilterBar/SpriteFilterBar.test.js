@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-import SpriteFilterBar from '../../src/components/SpriteFilterBar.vue'
-import { useComparison } from '../../src/composables/useComparison.js'
+import SpriteFilterBar from './SpriteFilterBar.vue'
+import { useComparison } from '../../composables/useComparison.js'
 
 const store = useComparison()
 beforeEach(() => {
