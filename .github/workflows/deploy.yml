@@ -24,6 +24,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npm test
       # vite.config.js derives `base` from GITHUB_REPOSITORY automatically,
       # so the build works for any repo name with no manual edits.
       - run: npm run build

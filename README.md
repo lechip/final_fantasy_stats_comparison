@@ -59,6 +59,11 @@ npm run build        # production build to dist/
 npm run preview      # serve the build locally
 ```
 
+```sh
+npm test             # run the unit tests once (Vitest)
+npm run test:watch   # watch mode
+```
+
 To preview the build exactly as it will appear under the GitHub Pages sub-path:
 
 ```sh
@@ -108,3 +113,4 @@ character's initial. The default set is Pixel Remaster
 Vue 3 (Composition API, single-file components) · Vite · Chart.js · plain CSS.
 No state library — shared state lives in a small composable
 ([`src/composables/useComparison.js`](src/composables/useComparison.js)).
+Tests: Vitest + @vue/test-utils + happy-dom ([`tests/`](tests/)).
