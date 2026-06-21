@@ -102,6 +102,8 @@ watch(
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 280px;
+  /* No min-height: the canvas always shrinks to fit its panel so it can't spill
+     out. The readable floor is enforced by .compare's min-height in App.vue. */
+  min-height: 0;
 }
 </style>

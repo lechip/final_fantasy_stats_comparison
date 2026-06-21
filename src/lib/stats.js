@@ -32,7 +32,7 @@ export const STAT_AXES = [
   {
     key: 'stamina',
     label: 'Stamina',
-    desc: 'Toughness: improves the chance to survive instant-death attacks, boosts Regen healing, and affects Poison/Sap damage.',
+    desc: 'Also called Toughness. Improves the chance to survive instant-death attacks, boosts Regen healing, and affects Poison/Sap damage.',
   },
   {
     key: 'magic',

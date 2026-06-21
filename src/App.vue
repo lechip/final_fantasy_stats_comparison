@@ -45,7 +45,9 @@ onMounted(() => {
 
 <style scoped>
 .app {
-  height: 100%;
+  /* min-height (not height) so the page can grow past one screen on very short
+     viewports instead of clipping; the 1fr row still fills the screen when it fits. */
+  min-height: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 10px;
@@ -75,7 +77,9 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  min-height: 0;
+  /* Readable floor: the radar shrinks to fit down to ~this height, after which
+     the page scrolls (via .app min-height) rather than the chart overflowing. */
+  min-height: 280px;
 }
 .panel {
   display: flex;
@@ -102,30 +106,11 @@ onMounted(() => {
 }
 
 @media (max-width: 760px) {
-  .app {
-    height: auto;
-    min-height: 100%;
-  }
   .compare {
     grid-template-columns: 1fr;
   }
   .panel-body {
     min-height: 330px;
-  }
-}
-</style>
-
-<!-- Page-level scroll behaviour: locked to one screen on desktop, scrollable on mobile. -->
-<style>
-@media (min-width: 761px) {
-  body {
-    overflow: hidden;
-  }
-}
-@media (max-width: 760px) {
-  html,
-  body {
-    height: auto;
   }
 }
 </style>
