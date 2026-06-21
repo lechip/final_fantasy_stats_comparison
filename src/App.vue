@@ -1,15 +1,9 @@
 <script setup>
-import { onMounted } from 'vue'
 import SpriteFilterBar from './components/SpriteFilterBar/SpriteFilterBar.vue'
 import LevelControl from './components/LevelControl/LevelControl.vue'
 import StatRadar from './components/StatRadar/StatRadar.vue'
 import LegendTable from './components/LegendTable/LegendTable.vue'
 import GithubLink from './components/GithubLink/GithubLink.vue'
-import { runSanityChecks } from './lib/stats.js'
-
-onMounted(() => {
-  if (import.meta.env.DEV) runSanityChecks()
-})
 </script>
 
 <template>

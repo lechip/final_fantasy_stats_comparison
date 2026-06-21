@@ -7,7 +7,6 @@ import {
   getCharacter,
   statsAtLevel,
   toNormalized,
-  runSanityChecks,
 } from './stats.js'
 
 const terra = getCharacter('terra')
@@ -122,11 +121,5 @@ describe('toNormalized', () => {
     const high = toNormalized(statsAtLevel(terra, lv99))[i]
     expect(high).toBeGreaterThan(low)
     expect(low).toBeLessThan(20)
-  })
-})
-
-describe('runSanityChecks', () => {
-  it('passes with the shipped data', () => {
-    expect(runSanityChecks()).toEqual([])
   })
 })

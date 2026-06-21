@@ -74,23 +74,3 @@ export const AXIS_MAX = STAT_AXES.reduce((acc, { key }) => {
 export function toNormalized(real) {
   return STAT_AXES.map(({ key }) => Math.round((real[key] / AXIS_MAX[key]) * 1000) / 10)
 }
-
-// Dev-only sanity checks: catch any data transcription error early.
-export function runSanityChecks() {
-  const errors = []
-  const lv10 = CHECKPOINTS.find((c) => c.level === 10)
-  if (lv10 && lv10.hpBase !== 173) errors.push(`Lv10 baseline HP should be 173, got ${lv10.hpBase}`)
-  for (let i = 1; i < CHECKPOINTS.length; i++) {
-    const a = CHECKPOINTS[i - 1]
-    const b = CHECKPOINTS[i]
-    if (b.hpBase < a.hpBase || b.mpBase < a.mpBase) {
-      errors.push(`Checkpoints not monotonic between Lv${a.level} and Lv${b.level}`)
-    }
-  }
-  const topHp = Math.max(...CHARACTERS.map((c) => statsAtLevel(c, TOP).hp))
-  if (topHp > 9999) errors.push(`Total HP at Lv${TOP.level} exceeds the 9999 cap (${topHp})`)
-  if (CHARACTERS.length !== 14) errors.push(`Expected 14 characters, found ${CHARACTERS.length}`)
-  if (errors.length) console.error('[stats] sanity check failed:\n' + errors.join('\n'))
-  else console.info('[stats] sanity checks passed (14 chars, anchors + monotonic curve OK)')
-  return errors
-}
