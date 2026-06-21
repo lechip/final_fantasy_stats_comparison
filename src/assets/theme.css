@@ -1,0 +1,72 @@
+/* Self-hosted pixel font (SIL Open Font License). */
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("./PressStart2P.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ff-window-top: #2840a8;
+  --ff-window-bottom: #0e1a52;
+  --ff-border-light: #dfe7ff;
+  --ff-border-dark: #1a2b78;
+  --ff-text: #ffffff;
+  --ff-accent: #ffd24a;
+  --ff-grid: rgba(255, 255, 255, 0.18);
+  --ff-muted: rgba(255, 255, 255, 0.55);
+  --page-bg: #05060f;
+  --font-pixel: "Press Start 2P", ui-monospace, "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(circle at 50% -10%, #1b2966 0%, var(--page-bg) 65%);
+  color: var(--ff-text);
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  line-height: 1.5;
+  -webkit-font-smoothing: none;
+}
+
+#app {
+  height: 100%;
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Classic FF blue menu window (pure-CSS bevel; a 9-slice border-image PNG can
+   be swapped in later for extra authenticity). */
+.ff-window {
+  background: linear-gradient(180deg, var(--ff-window-top), var(--ff-window-bottom));
+  border: 2px solid var(--ff-border-light);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 2px var(--ff-border-dark),
+    0 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.pixel-shadow {
+  text-shadow: 1px 1px 0 #000;
+}
+
+/* Reduce motion if requested */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

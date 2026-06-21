@@ -1,0 +1,33 @@
+{
+  "note": "Fixed stats (vigor/speed/stamina/magic) are level-independent natural base values. bonus.hp / bonus.mp are the per-character constants added to the universal level baseline in levels.json to get total HP/MP at any level. Values from kwhazit FF6 mechanics tables (SNES base). Umaro's magic is largely cosmetic (he can't be controlled or cast).",
+  "characters": [
+    { "id": "terra",  "name": "Terra",  "sprite": "terra.png",  "color": "#5AD17A",
+      "fixed": { "vigor": 31, "speed": 33, "stamina": 28, "magic": 39 }, "bonus": { "hp": 40, "mp": 16 } },
+    { "id": "locke",  "name": "Locke",  "sprite": "locke.png",  "color": "#4A90E2",
+      "fixed": { "vigor": 37, "speed": 40, "stamina": 31, "magic": 28 }, "bonus": { "hp": 48, "mp": 7 } },
+    { "id": "cyan",   "name": "Cyan",   "sprite": "cyan.png",   "color": "#2BC4C4",
+      "fixed": { "vigor": 40, "speed": 28, "stamina": 33, "magic": 25 }, "bonus": { "hp": 53, "mp": 5 } },
+    { "id": "shadow", "name": "Shadow", "sprite": "shadow.png", "color": "#9AA0A6",
+      "fixed": { "vigor": 39, "speed": 38, "stamina": 30, "magic": 33 }, "bonus": { "hp": 51, "mp": 6 } },
+    { "id": "edgar",  "name": "Edgar",  "sprite": "edgar.png",  "color": "#E6B422",
+      "fixed": { "vigor": 39, "speed": 30, "stamina": 34, "magic": 29 }, "bonus": { "hp": 49, "mp": 6 } },
+    { "id": "sabin",  "name": "Sabin",  "sprite": "sabin.png",  "color": "#F07B2E",
+      "fixed": { "vigor": 47, "speed": 37, "stamina": 39, "magic": 28 }, "bonus": { "hp": 58, "mp": 3 } },
+    { "id": "celes",  "name": "Celes",  "sprite": "celes.png",  "color": "#EBE05A",
+      "fixed": { "vigor": 34, "speed": 34, "stamina": 31, "magic": 36 }, "bonus": { "hp": 44, "mp": 15 } },
+    { "id": "strago", "name": "Strago", "sprite": "strago.png", "color": "#9B6FE0",
+      "fixed": { "vigor": 28, "speed": 25, "stamina": 19, "magic": 34 }, "bonus": { "hp": 35, "mp": 13 } },
+    { "id": "relm",   "name": "Relm",   "sprite": "relm.png",   "color": "#F58CC0",
+      "fixed": { "vigor": 26, "speed": 34, "stamina": 22, "magic": 44 }, "bonus": { "hp": 37, "mp": 18 } },
+    { "id": "setzer", "name": "Setzer", "sprite": "setzer.png", "color": "#9AA7E0",
+      "fixed": { "vigor": 36, "speed": 32, "stamina": 32, "magic": 29 }, "bonus": { "hp": 46, "mp": 9 } },
+    { "id": "mog",    "name": "Mog",    "sprite": "mog.png",    "color": "#7FD4F0",
+      "fixed": { "vigor": 29, "speed": 36, "stamina": 26, "magic": 35 }, "bonus": { "hp": 39, "mp": 16 } },
+    { "id": "gau",    "name": "Gau",    "sprite": "gau.png",    "color": "#A8C83C",
+      "fixed": { "vigor": 44, "speed": 38, "stamina": 36, "magic": 34 }, "bonus": { "hp": 45, "mp": 10 } },
+    { "id": "gogo",   "name": "Gogo",   "sprite": "gogo.png",   "color": "#E8503A",
+      "fixed": { "vigor": 25, "speed": 30, "stamina": 20, "magic": 26 }, "bonus": { "hp": 36, "mp": 12 } },
+    { "id": "umaro",  "name": "Umaro",  "sprite": "umaro.png",  "color": "#C9E6F5",
+      "fixed": { "vigor": 57, "speed": 33, "stamina": 46, "magic": 37 }, "bonus": { "hp": 60, "mp": 0 } }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "pixel-remaster",
+  "note": "Universal (character-independent) HP/MP baseline at each checkpoint level, without Esper level-up bonuses. A character's total HP/MP at a level = this baseline + that character's hp/mp bonus (see characters.json). MP curve matches the JP/Pixel-Remaster progression (max 989 at Lv99; the SNES-NA curve maxes at 961).",
+  "source": "Stat-by-level baseline cross-checked against Gamer Corner Guides (guides.gamercorner.net/ffvi/levels) and kwhazit FF6 mechanics; anchors verified: baseline HP is 173 at Lv10 and 5050 at Lv60.",
+  "checkpoints": [
+    { "level": 10, "hpBase": 173,  "mpBase": 81 },
+    { "level": 30, "hpBase": 1451, "mpBase": 382 },
+    { "level": 50, "hpBase": 3679, "mpBase": 598 },
+    { "level": 70, "hpBase": 6591, "mpBase": 769 },
+    { "level": 99, "hpBase": 9748, "mpBase": 989 }
+  ]
+}
