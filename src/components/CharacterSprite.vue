@@ -1,6 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { spriteUrl } from '../lib/assets.js'
+import { useComparison } from '../composables/useComparison.js'
 
 const props = defineProps({
   character: { type: Object, required: true },
@@ -8,7 +9,12 @@ const props = defineProps({
   locked: { type: Boolean, default: false },
 })
 const emit = defineEmits(['toggle'])
+
+const { spriteStyle } = useComparison()
 const failed = ref(false)
+const src = computed(() => spriteUrl(props.character.sprite, spriteStyle.value))
+// A sprite missing in one set shouldn't stay hidden after switching sets.
+watch(spriteStyle, () => (failed.value = false))
 </script>
 
 <template>
@@ -23,12 +29,7 @@ const failed = ref(false)
     @click="emit('toggle', character.id)"
   >
     <span class="img-box">
-      <img
-        v-if="!failed"
-        :src="spriteUrl(character.sprite)"
-        :alt="character.name"
-        @error="failed = true"
-      />
+      <img v-if="!failed" :src="src" :alt="character.name" @error="failed = true" />
       <span v-else class="fallback" :style="{ background: character.color }">{{
         character.name[0]
       }}</span>

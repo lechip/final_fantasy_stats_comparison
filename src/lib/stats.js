@@ -6,13 +6,39 @@ export const CHECKPOINTS = levelsData.checkpoints // [{ level, hpBase, mpBase },
 export const DATA_VERSION = levelsData.version
 
 // Radar axis order is fixed. HP/MP vary by level; the rest are level-independent.
+// `desc` is the intuitive, formula-free explanation (paraphrased from the
+// Final Fantasy Wiki's FFVI stats page) shown as a hover tooltip.
 export const STAT_AXES = [
-  { key: 'hp', label: 'HP' },
-  { key: 'mp', label: 'MP' },
-  { key: 'vigor', label: 'Vigor' },
-  { key: 'speed', label: 'Speed' },
-  { key: 'stamina', label: 'Stamina' },
-  { key: 'magic', label: 'Magic' },
+  {
+    key: 'hp',
+    label: 'HP',
+    desc: 'How much health a character has. When it reaches 0, the character is knocked out (KO’d).',
+  },
+  {
+    key: 'mp',
+    label: 'MP',
+    desc: 'The pool spent to cast spells — how many MP-costing spells a character can use before running out.',
+  },
+  {
+    key: 'vigor',
+    label: 'Vigor',
+    desc: 'Also called Strength. Increases the damage dealt by physical attacks.',
+  },
+  {
+    key: 'speed',
+    label: 'Speed',
+    desc: 'Also called Agility. Raises how quickly the ATB gauge fills, so the character gets to act more often.',
+  },
+  {
+    key: 'stamina',
+    label: 'Stamina',
+    desc: 'Toughness: improves the chance to survive instant-death attacks, boosts Regen healing, and affects Poison/Sap damage.',
+  },
+  {
+    key: 'magic',
+    label: 'Magic',
+    desc: 'Also called Magic Power. Increases the damage and potency of magic spells.',
+  },
 ]
 
 const byId = new Map(CHARACTERS.map((c) => [c.id, c]))

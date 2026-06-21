@@ -8,6 +8,12 @@ const MAX = 4
 const levelIndex = ref(CHECKPOINTS.findIndex((c) => c.level === 50))
 const selectedIds = ref(['terra', 'sabin', 'relm'])
 
+// Sprite art set: 'remaster' (Pixel Remaster) or 'classic' (SNES).
+const spriteStyle = ref('remaster')
+const setSpriteStyle = (s) => {
+  spriteStyle.value = s
+}
+
 const currentCheckpoint = computed(() => CHECKPOINTS[levelIndex.value])
 const isFull = computed(() => selectedIds.value.length >= MAX)
 const isSelected = (id) => selectedIds.value.includes(id)
@@ -36,5 +42,7 @@ export function useComparison() {
     isFull,
     isSelected,
     toggle,
+    spriteStyle,
+    setSpriteStyle,
   }
 }

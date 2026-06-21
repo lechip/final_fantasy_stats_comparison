@@ -12,6 +12,8 @@ the SNES / Pixel Remaster menus.
 - **Sprite filter row** of all 14 playable characters — click to toggle; selected
   sprites glow in their colour, deselected are greyed out, and the row locks once
   four are chosen.
+- **Sprite-style toggle** — switch the whole row between **Pixel Remaster** and
+  **Classic (SNES)** artwork.
 - **Level selector** with five checkpoints (10 / 30 / 50 / 70 / 99) showing the
   **actual** in-game stats at each — no interpolation.
 - **Value table** with the exact numbers per selected character.
@@ -73,18 +75,22 @@ GITHUB_REPOSITORY=you/your-repo npm run build && npm run preview
 `GITHUB_REPOSITORY` automatically in CI, so **no manual edit is needed** regardless
 of the repository name. Locally the base stays `/`.
 
-## Swapping the sprites
+## Sprites
 
-Sprites live in [`public/sprites/`](public/sprites/) as `<id>.png` (e.g. `terra.png`),
-referenced by filename from `characters.json`. To use different art (e.g. the Pixel
-Remaster redraws), drop in PNGs with the same filenames — transparent background,
-roughly 32×48, ideally with a dark outline so they read on the blue panels. If a
-sprite is missing, the UI falls back to a coloured tile with the character's initial.
+Two sprite sets ship, switchable live via the in-app toggle:
 
-The current sprites are the **original SNES overworld sprites** (sourced via the
-[`mthurmond/ff6-sprites`](https://github.com/mthurmond/ff6-sprites) repository, white
-background removed). Higher-detail Pixel Remaster sprites can be found on
-[The Spriters Resource](https://www.spriters-resource.com/pc_computer/finalfantasy6pixelremaster/).
+- `public/sprites/remaster/<id>.png` — **Pixel Remaster** field sprites (front-facing
+  standing frame, extracted from the Pixel Remaster overworld sheets on
+  [The Spriters Resource](https://www.spriters-resource.com/pc_computer/finalfantasy6pixelremaster/)).
+- `public/sprites/classic/<id>.png` — **original SNES** overworld sprites (via the
+  [`mthurmond/ff6-sprites`](https://github.com/mthurmond/ff6-sprites) repository).
+
+Each set has the 14 files named by character id (`terra.png` … `umaro.png`,
+transparent background). To use different art, drop in PNGs with the same filenames —
+roughly 16–48px tall, ideally with a dark outline so they read on the blue panels. If
+a sprite is missing in a set, the UI falls back to a coloured tile with the
+character's initial. The default set is Pixel Remaster
+([`useComparison.js`](src/composables/useComparison.js) → `spriteStyle`).
 
 ## Licensing & attribution
 
