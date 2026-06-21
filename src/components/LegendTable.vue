@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, onUnmounted } from 'vue'
 import { STAT_AXES, statsAtLevel } from '../lib/stats.js'
 import { useComparison } from '../composables/useComparison.js'
 
@@ -15,23 +15,64 @@ const rows = computed(() =>
   }),
 )
 
-// Themed hover tooltip describing each stat (teleported to body so the
-// scrollable panel never clips it).
+// Themed tooltip describing each stat (teleported to body so the scrollable
+// panel never clips it). Mouse = hover; touch = tap to toggle, tap-away to
+// dismiss; keyboard = reveal on focus.
 const tip = ref(null) // { desc, x, y }
-function place(e, desc) {
+function place(x, y, desc) {
   tip.value = {
     desc,
-    x: Math.max(8, Math.min(e.clientX + 14, window.innerWidth - 244)),
-    y: Math.min(e.clientY + 16, window.innerHeight - 90),
+    x: Math.max(8, Math.min(x + 14, window.innerWidth - 244)),
+    y: Math.min(y + 16, window.innerHeight - 90),
   }
+}
+
+let docBound = false
+function onDocDown(e) {
+  if (!(e.target.closest && e.target.closest('.stat-name'))) hideTip()
 }
 function hideTip() {
   tip.value = null
+  if (docBound) {
+    document.removeEventListener('pointerdown', onDocDown, true)
+    docBound = false
+  }
 }
-function toggleTip(e, desc) {
-  if (tip.value && tip.value.desc === desc) hideTip()
-  else place(e, desc)
+
+// Mouse only: show/follow on hover, hide on leave.
+function onHover(e, desc) {
+  if (e.pointerType === 'mouse') place(e.clientX, e.clientY, desc)
 }
+function onLeave(e) {
+  if (!e || e.pointerType === 'mouse') hideTip()
+}
+// Touch / pen: tap toggles; a tap elsewhere dismisses it.
+function onTap(e, desc) {
+  if (e.pointerType === 'mouse') return
+  if (tip.value && tip.value.desc === desc) {
+    hideTip()
+    return
+  }
+  place(e.clientX, e.clientY, desc)
+  if (!docBound) {
+    document.addEventListener('pointerdown', onDocDown, true)
+    docBound = true
+  }
+}
+// Keyboard only: reveal on focus-visible (not the focus that follows a tap).
+function onFocus(e, desc) {
+  let keyboard = false
+  try {
+    keyboard = e.target.matches(':focus-visible')
+  } catch {
+    keyboard = false // browser without :focus-visible support
+  }
+  if (keyboard) {
+    const r = e.target.getBoundingClientRect()
+    place(r.right, r.top, desc)
+  }
+}
+onUnmounted(hideTip)
 </script>
 
 <template>
@@ -56,11 +97,11 @@ function toggleTip(e, desc) {
               class="stat-name"
               tabindex="0"
               :aria-label="`${row.label}: ${row.desc}`"
-              @mouseenter="place($event, row.desc)"
-              @mousemove="place($event, row.desc)"
-              @mouseleave="hideTip"
-              @click="toggleTip($event, row.desc)"
-              @focus="(e) => place({ clientX: e.target.getBoundingClientRect().right, clientY: e.target.getBoundingClientRect().bottom }, row.desc)"
+              @pointerenter="onHover($event, row.desc)"
+              @pointermove="onHover($event, row.desc)"
+              @pointerleave="onLeave"
+              @pointerup="onTap($event, row.desc)"
+              @focus="onFocus($event, row.desc)"
               @blur="hideTip"
               >{{ row.label }}</span
             >
