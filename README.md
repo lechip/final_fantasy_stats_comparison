@@ -1,5 +1,7 @@
 # Final Fantasy VI — Stat Comparison
 
+[![Stat comparison](https://img.shields.io/badge/Live%20demo-▶%20Open%20app-ffd24a?style=for-the-badge&labelColor=1b2b76)](https://lechip.github.io/final_fantasy_stats_comparison/)
+
 A single-page web app to compare **Final Fantasy VI** character stats on a radar
 chart. Pick a level, toggle up to four characters from the sprite row, and their
 stats overlay on one star graph with an exact-value table beside it. Styled after
